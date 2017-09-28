@@ -75,3 +75,8 @@ springboot集成kafka:
             myProducer.sendMessage();
         }
     }
+ 6,你会发现启动后会报错,首先要确定是否能连上kafka服务器
+   如果你确定kafka服务器能被外网访问到,那就进入到kafka的config目录下
+   编辑server.properties文件,在文件最下面添加如下内容:
+   advertised.host.name=192.168.230.10
+   保存并退出,重启kafka服务,再启动测试就没问题了
