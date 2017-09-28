@@ -1,0 +1,26 @@
+按照dcm4chee官方安装说明文档，dcm4chee以及dcm4che2-tools在Linux32bits以及Linux64bits，
+以及Windows32bits可以顺利完成dcm压缩和解压缩，唯独Windows64bits环境不可
+但是我们在本地Windows环境开发完的代码部署到Linux服务器怎么办?
+
+解决方法:
+同样引入相对应的so文件和jar包
+
+在Windows上安装本地jai_imageio:
+您将需要下载jai_imageio-1_1-lib-windows-i586-jdk.exe，如果您使用的是JRE ，您将需要下载jai_imageio-1_1-lib-windows-i586-jre.exe
+运行安装程序并将其指向本地开发将用于运行的JDK / JRE安装。
+
+在Linux上安装本地jai_imageio:
+下载JAI Image I / O 1.1，选择适当的架构：
+i586为32位系统
+用于64位的amd64（即使使用英特尔处理器）
+将文件提取到临时目录中
+在JDK / JRE lib / ext文件夹中移动jar文件。
+在JDK / JRE lib / amd64文件夹中移动文件。
+例如，在Centos7 64位系统上：
+$ cd / tmp
+$ wget http://download.java.net/media/jai-imageio/builds/release/1.1/jai_imageio-1_1-lib-linux-amd64.tar.gz && \
+gunzip -c jai_imageio-1_1-lib-linux-amd64.tar.gz | tar xf  -  && \
+mv /tmp/jai_imageio-1_1/lib/*.jar $ JAVA_HOME / jre / lib / ext / && \
+mv /tmp/jai_imageio-1_1/lib/*.so $ JAVA_HOME / jre / lib / amd64 / && \
+rm /tmp/jai_imageio-1_1-lib-linux-amd64.tar.gz && \
+rm -r / tmp / jai_imageio-1_1
